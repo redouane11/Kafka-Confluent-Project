@@ -28,6 +28,6 @@ public class Producer {
         final Flux<String> quotes = Flux.fromStream(Stream.generate(() -> faker.hobbit().quote()));
 
         Flux.zip(interval, quotes)
-                .map(it -> template.send("hobbit", faker.random().nextInt(42), it.getT2())).blockLast();
+                .map(it -> template.send("Topic2", faker.random().nextInt(42), it.getT2())).blockLast();
     }
 }

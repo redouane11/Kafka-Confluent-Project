@@ -2,11 +2,14 @@ package com.adriouchtechno.pro;
 
 import com.github.javafaker.Faker;
 import lombok.RequiredArgsConstructor;
+import org.apache.kafka.clients.admin.NewTopic;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.event.ApplicationStartedEvent;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.event.EventListener;
 import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.kafka.config.TopicBuilder;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Flux;
@@ -23,6 +26,10 @@ public class AdriouchTechnoSpringKafkaApplication {
 		SpringApplication.run(AdriouchTechnoSpringKafkaApplication.class, args);
 	}
 
+	@Bean
+	NewTopic topic2(){
+		return TopicBuilder.name("Topic2").partitions(13).build();
+	}
 }
 
 

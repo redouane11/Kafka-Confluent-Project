@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class Consumer{
     JSONObject jo = new JSONObject();
-    @KafkaListener(topics = {"hobbit"}, groupId = "spring-boot-kafka")
+    @KafkaListener(topics = {"Topic2"}, groupId = "spring-boot-kafka")
     public void consumer(ConsumerRecord<Integer,String> record){
         jo.put("value", record.value());
         jo.put("key", record.key());
